@@ -1,0 +1,43 @@
+@startuml
+actor User
+
+participant "Presentation Layer" as PL
+participant "ImportService (Business)" as BL
+participant "UserRepository (DAL)" as UR
+participant "CardRepository (DAL)" as CR
+participant "TransactionRepository (DAL)" as TR
+database "SQLite DB" as DB
+
+User -> PL : Upload CSV
+PL -> BL : ImportTopUps(csvPath)
+
+BL -> UR : GetByEmail(email)
+UR -> DB : SELECT User
+DB --> UR : User / null
+UR --> BL : result
+
+alt User not exists
+    BL -> UR : Add(User)
+    UR -> DB : INSERT User
+    UR --> BL : saved
+end
+
+BL -> CR : GetByToken(token)
+CR -> DB : SELECT Card
+DB --> CR : Card / null
+CR --> BL : result
+
+alt Card not exists
+    BL -> CR : Add(Card)
+    CR -> DB : INSERT Card
+    CR --> BL : saved
+end
+
+BL -> TR : Add(Transaction)
+TR -> DB : INSERT Transaction
+TR --> BL : saved
+
+BL --> PL : Import completed
+PL --> User : Success message
+
+@enduml

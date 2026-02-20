@@ -1,0 +1,83 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+' =========================
+' Core Account
+' =========================
+class UserAccount {
+  -id: String
+  -email: String
+  -passwordHash: String
+  -status: AccountStatus
+  +register(email: String, password: String)
+  +verifyContact(code: String)
+  +addPaymentMethod(pm: PaymentMethod)
+}
+
+class Profile {
+  -fullName: String
+  -phone: String
+}
+
+UserAccount "1" *-- "1" Profile
+
+' =========================
+' Payment Methods (OOP)
+' =========================
+abstract class PaymentMethod {
+  -id: String
+  -isDefault: boolean
+  +validate(): boolean
+}
+
+class Card {
+  -maskedPan: String
+  -expiry: String
+  -brand: String
+  -token: String
+  +validate(): boolean
+}
+
+PaymentMethod <|-- Card
+
+UserAccount "1" o-- "0..*" PaymentMethod
+
+' =========================
+' Issuer Country
+' =========================
+class Country {
+  -code: String
+  -name: String
+}
+
+Card "1" --> "1" Country : issuerCountry
+
+' =========================
+' Transactions
+' =========================
+class Transaction {
+  -id: String
+  -amount: double
+  -createdAt: DateTime
+  -status: TxStatus
+}
+
+UserAccount "1" o-- "0..*" Transaction
+Transaction "0..*" --> "1" PaymentMethod : uses
+
+' =========================
+' Enums
+' =========================
+enum AccountStatus {
+  PENDING
+  ACTIVE
+  BLOCKED
+}
+
+enum TxStatus {
+  CREATED
+  SUCCESS
+  FAILED
+}
+
+@enduml
