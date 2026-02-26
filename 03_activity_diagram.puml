@@ -1,0 +1,83 @@
+@startuml
+start
+
+partition "User" {
+  :Selects "Pay with PayPal"\non Merchant website;
+}
+
+partition "Merchant Website" {
+  :Creates order;
+  :Sends payment request\nto PayPal;
+}
+
+partition "PayPal System" {
+  :Shows login/authorization page;
+}
+
+partition "User" {
+  if (Authenticated?) then (yes)
+  else (no)
+    partition "PayPal System" {
+      :Shows login error;
+      :Redirects to Merchant (failed);
+    }
+    partition "Merchant Website" {
+      :Shows "Authentication failed";
+    }
+    stop
+  endif
+}
+
+partition "PayPal System" {
+  :Displays order details\n(amount, merchant, currency);
+}
+
+partition "User" {
+  :Selects funding source\n(Balance or Card);
+}
+
+partition "PayPal System" {
+  :Requests confirmation;
+}
+
+partition "User" {
+  if (Confirms payment?) then (yes)
+  else (no)
+    :Cancels payment;
+    partition "PayPal System" {
+      :Redirects to Merchant (cancel);
+    }
+    partition "Merchant Website" {
+      :Shows "Payment cancelled";
+    }
+    stop
+  endif
+}
+
+partition "PayPal System" {
+  :Starts payment authorization;
+}
+
+partition "Bank / Card Issuer" {
+  :Performs card authorization\n(if card is used);
+}
+
+partition "PayPal System" {
+  if (Authorization successful?) then (yes)
+    :Creates Transaction record (SUCCESS);
+    :Sends "Payment success"\ncallback/redirect to Merchant;
+    partition "Merchant Website" {
+      :Shows "Payment completed";
+    }
+    stop
+  else (no)
+    :Creates/updates Transaction record (FAILED);
+    :Sends "Payment failed"\ncallback/redirect to Merchant;
+    partition "Merchant Website" {
+      :Shows "Payment failed";
+    }
+    stop
+  endif
+}
+
+@enduml

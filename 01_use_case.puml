@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor "New User" as User
+actor "Email/SMS Service" as Msg
+actor "Card Issuer Bank" as Bank
+
+rectangle "PayPal System" {
+  usecase "Register account" as UC1
+  usecase "Verify email/phone" as UC2
+  usecase "Add payment card" as UC3
+  usecase "Validate card (3DS/Authorization)" as UC4
+  usecase "Save card" as UC5
+}
+
+
+User --> UC1
+UC1 --> UC2 : <<include>>
+Msg --> UC2
+
+User --> UC3
+UC3 --> UC4 : <<include>>
+Bank --> UC4
+UC3 --> UC5 : <<include>>
+@enduml
