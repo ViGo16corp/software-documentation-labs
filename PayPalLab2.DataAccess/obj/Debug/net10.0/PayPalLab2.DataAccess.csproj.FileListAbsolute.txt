@@ -1,0 +1,14 @@
+E:\PayPalLab2\PayPalLab2.DataAccess\bin\Debug\net10.0\PayPalLab2.DataAccess.deps.json
+E:\PayPalLab2\PayPalLab2.DataAccess\bin\Debug\net10.0\PayPalLab2.DataAccess.runtimeconfig.json
+E:\PayPalLab2\PayPalLab2.DataAccess\bin\Debug\net10.0\PayPalLab2.DataAccess.dll
+E:\PayPalLab2\PayPalLab2.DataAccess\bin\Debug\net10.0\PayPalLab2.DataAccess.pdb
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\PayPalLab2.DataAccess.csproj.AssemblyReference.cache
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\PayPalLab2.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\PayPalLab2.DataAccess.AssemblyInfoInputs.cache
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\PayPalLab2.DataAccess.AssemblyInfo.cs
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\PayPalLab2.DataAccess.csproj.CoreCompileInputs.cache
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\PayPalLab2.DataAccess.dll
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\refint\PayPalLab2.DataAccess.dll
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\PayPalLab2.DataAccess.pdb
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\PayPalLab2.DataAccess.genruntimeconfig.cache
+E:\PayPalLab2\PayPalLab2.DataAccess\obj\Debug\net10.0\ref\PayPalLab2.DataAccess.dll
