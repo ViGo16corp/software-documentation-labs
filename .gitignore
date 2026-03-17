@@ -1,0 +1,16 @@
+# .NET
+**/bin/
+**/obj/
+
+# VS / VS Code
+.vs/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local data artifacts (не комітимо)
+*.db
+*.sqlite
+*.csv
