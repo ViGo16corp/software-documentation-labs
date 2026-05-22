@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="PayPalLab2.AppHost/PayPalLab2.AppHost.csproj" />
+  <Project Path="PayPalLab2.Business/PayPalLab2.Business.csproj" />
+  <Project Path="PayPalLab2.CsvGenerator/PayPalLab2.CsvGenerator.csproj" />
+  <Project Path="PayPalLab2.DataAccess/PayPalLab2.DataAccess.csproj" />
+  <Project Path="PayPalLab2.Presentation/PayPalLab2.Presentation.csproj" />
+</Solution>
